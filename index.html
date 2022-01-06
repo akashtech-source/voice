@@ -12,28 +12,31 @@
       justify-content: center;
       align-items: center;
     }
+    #content {
+      font-family: sans-serif;
+      text-align: center;
+      font-size: 30px;
+    }
   </style>
   <body>
-    <div class="main"><button id="talk">Click Me To Start</button></div>
+    <div class="main">
+      <button id="talk">Click Me To Start</button>
+    </div>
     <h3 id="content"></h3>
     <script>
       const btn = document.getElementById("talk");
       const content = document.getElementById("content");
 
-      //
-      const greetings = [
-        "My name is Hello Hritika",
-        "I'm a Robot made by AKash",
-      ];
-      const weather = ["Weather is fine", "You need a tan"];
+      const greetings = ["My Name is Tanha"];
+
+      const weather = ["Weather is fine", "you need a tan"];
 
       const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
-
       const recognition = new SpeechRecognition();
 
       recognition.onstart = function () {
-        console.log("Voice activated");
+        console.log("jinn");
       };
 
       recognition.onresult = function (event) {
@@ -43,16 +46,16 @@
         content.textContent = transcript;
         readOutLoud(transcript);
       };
-      // add the listener
+
       btn.addEventListener("click", () => {
         recognition.start();
       });
 
       function readOutLoud(message) {
         const speech = new SpeechSynthesisUtterance();
-        speech.text = "i don't know what you said";
 
-        if (message.includes("How Are You")) {
+        speech.text = "i dont know";
+        if (message.includes("what's your name")) {
           const finalText =
             greetings[Math.floor(Math.random() * greetings.length)];
           speech.text = finalText;
